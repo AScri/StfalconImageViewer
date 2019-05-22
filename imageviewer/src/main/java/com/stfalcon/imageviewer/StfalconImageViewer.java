@@ -237,6 +237,11 @@ public class StfalconImageViewer<T> {
             return this;
         }
 
+        public Builder<T> withDialogStyle(Integer id) {
+            this.data.setDialogStyle(id);
+            return this;
+        }
+
         /**
          * Enables or disables zooming. True by default.
          *

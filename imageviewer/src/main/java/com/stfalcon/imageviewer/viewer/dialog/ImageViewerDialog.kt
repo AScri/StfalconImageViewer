@@ -25,8 +25,8 @@ import com.stfalcon.imageviewer.viewer.builder.BuilderData
 import com.stfalcon.imageviewer.viewer.view.ImageViewerView
 
 internal class ImageViewerDialog<T>(
-    context: Context,
-    private val builderData: BuilderData<T>
+        context: Context,
+        private val builderData: BuilderData<T>
 ) {
 
     private val dialog: AlertDialog
@@ -34,22 +34,27 @@ internal class ImageViewerDialog<T>(
     private var animateOpen = true
 
     private val dialogStyle: Int
-        get() = if (builderData.shouldStatusBarHide)
+        get() = if (builderData.dialogStyle > 0) {
+            builderData.dialogStyle
+        } else if (builderData.shouldStatusBarHide && builderData.shouldCutoutHide) {
+            R.style.ImageViewerDialog_NoStatusBar_Cutout
+        } else if (builderData.shouldStatusBarHide && !builderData.shouldCutoutHide) {
             R.style.ImageViewerDialog_NoStatusBar
-        else
-            R.style.ImageViewerDialog_Default
+        } else if (!builderData.shouldStatusBarHide && builderData.shouldCutoutHide) {
+            R.style.ImageViewerDialog_Default_Cutout
+        } else R.style.ImageViewerDialog_Default
 
     init {
         setupViewerView()
         dialog = AlertDialog
-            .Builder(context, dialogStyle)
-            .setView(viewerView)
-            .setOnKeyListener { _, keyCode, event -> onDialogKeyEvent(keyCode, event) }
-            .create()
-            .apply {
-                setOnShowListener { viewerView.open(builderData.transitionView, animateOpen) }
-                setOnDismissListener { builderData.onDismissListener?.onDismiss() }
-            }
+                .Builder(context, dialogStyle)
+                .setView(viewerView)
+                .setOnKeyListener { _, keyCode, event -> onDialogKeyEvent(keyCode, event) }
+                .create()
+                .apply {
+                    setOnShowListener { viewerView.open(builderData.transitionView, animateOpen) }
+                    setOnDismissListener { builderData.onDismissListener?.onDismiss() }
+                }
     }
 
     fun show(animate: Boolean) {
@@ -66,7 +71,7 @@ internal class ImageViewerDialog<T>(
     }
 
     fun getCurrentPosition(): Int =
-        viewerView.currentPosition
+            viewerView.currentPosition
 
     fun updateTransitionImage(imageView: ImageView?) {
         viewerView.updateTransitionImage(imageView)
@@ -74,8 +79,8 @@ internal class ImageViewerDialog<T>(
 
     private fun onDialogKeyEvent(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK &&
-            event.action == KeyEvent.ACTION_UP &&
-            !event.isCanceled
+                event.action == KeyEvent.ACTION_UP &&
+                !event.isCanceled
         ) {
             if (viewerView.isScaled) {
                 viewerView.resetScale()

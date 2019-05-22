@@ -16,6 +16,12 @@ object Demo {
         Poster(url = "$POSTERS_PATH/Max.jpg", description = "Maximillian \"Max\" Rockatansky started his apocalyptic adventure as a Main Force Patrol officer who fought for peace on the decaying roads of Australian civilization. Max served as the last line of defense against the reckless marauders terrorizing the roadways, driving a V8 Interceptor."),
         Poster(url = "$POSTERS_PATH/Daniel.jpg", description = "Daniel Morales - the fastest delivery man for the local pizza parlor Pizza Joe in Marseille, France. On the last day of work, he sets a new speed record, then leaves the job to pursue a new career as a taxi driver with the blessings of his boss and co-workers. Daniel's vehicle is a white 1997 Peugeot 406..."))
 
+    val updatedPosters = listOf(
+            Poster(url = "$POSTERS_PATH/Vincent.jpg", description = "Vincent Vega is a hitman and associate of Marsellus Wallace. He had a brother named Vic Vega who was shot and killed by an undercover cop while on a job. He worked in Amsterdam for over three years and recently returned to Los Angeles, where he has been partnered with Jules Winnfield."),
+            Poster(url = "$POSTERS_PATH/Jules.jpg", description = "Jules Winnfield - initially he is a Hitman working alongside Vincent Vega but after revelation, or as he refers to it \"a moment of clarity\" he decides to leave to \"Walk the Earth.\" During the film he is stated to be from Inglewood, California"),
+            Poster(url = "$POSTERS_PATH/Daniel.jpg", description = "Daniel Morales - the fastest delivery man for the local pizza parlor Pizza Joe in Marseille, France. On the last day of work, he sets a new speed record, then leaves the job to pursue a new career as a taxi driver with the blessings of his boss and co-workers. Daniel's vehicle is a white 1997 Peugeot 406..."))
+
+
     val horizontalImages = listOf(
         "$MISC_PATH/horizontal_colorful_1.jpg",
         "$MISC_PATH/square_colorful.jpg",

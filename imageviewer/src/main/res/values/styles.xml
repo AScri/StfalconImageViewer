@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="ImageViewerDialog" parent="android:Theme.Translucent.NoTitleBar"/>
 
@@ -8,6 +8,15 @@
     <style name="ImageViewerDialog.Default" parent="android:Theme.Translucent.NoTitleBar">
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <style name="ImageViewerDialog.NoStatusBar.Cutout" parent="ImageViewerDialog.NoStatusBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="p">shortEdges</item>
+    </style>
+
+    <style name="ImageViewerDialog.Default.Cutout" parent="ImageViewerDialog.Default">
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="p">shortEdges</item>
     </style>
 
 </resources>

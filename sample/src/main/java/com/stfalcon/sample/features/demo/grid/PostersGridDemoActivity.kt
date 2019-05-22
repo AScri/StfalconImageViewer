@@ -27,12 +27,12 @@ class PostersGridDemoActivity : AppCompatActivity() {
 
     private fun openViewer(startPosition: Int, target: ImageView) {
         viewer = StfalconImageViewer.Builder<Poster>(this, Demo.posters, ::loadPosterImage)
-            .withStartPosition(startPosition)
-            .withTransitionFrom(target)
-            .withImageChangeListener {
-                viewer.updateTransitionImage(postersGridView.imageViews[it])
-            }
-            .show()
+                .withStartPosition(startPosition)
+                .withTransitionFrom(target)
+                .withImageChangeListener {
+                    viewer.updateTransitionImage(postersGridView.imageViews[it])
+                }
+                .show()
     }
 
     private fun loadPosterImage(imageView: ImageView, poster: Poster?) {
